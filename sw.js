@@ -1,25 +1,22 @@
-var cacheName = 'hello-pwa';
-var filesToCache = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/main.js'
-];
+// removed everything, copied from Tip Calculator project as per instructions in homework 2
 
-/* Start the service worker and cache all of the app's content */
-self.addEventListener('install', function(e) {
-  e.waitUntil(
-    caches.open(cacheName).then(function(cache) {
-      return cache.addAll(filesToCache);
-    })
-  );
+self.addEventListener('install', event => {
+  console.log(`Event fired: ${event.type}`);
+  console.dir(event);
 });
 
-/* Serve cached content when offline */
-self.addEventListener('fetch', function(e) {
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request);
-    })
-  );
+self.addEventListener('activate', event => {
+  console.log(`Event fired: ${event.type}`);
+  console.dir(event);
+});
+
+// This is what was needed for the homework. I removed what was previously in the fetch
+// just console.log and console.dir's (similar to console.log)
+// and added in the code that was in the homework 3 instructions
+
+self.addEventListener('fetch', event => {
+  let ran= Math.floor(Math.random() * 3) + 1;
+  let ranPage = ran.toString() + '.html';
+  console.log(`Fetching random ${ranPage}`);
+  event.respondWith(fetch(ranPage));
 });

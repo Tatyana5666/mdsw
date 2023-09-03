@@ -1,5 +1,11 @@
-let installButtonetinstallButton=document.getElementById('installButton');
+let installButton;
+installButton=document.getElementById('installButton');
 installButton.onclick=doInstall;
+
+// Your code here was weirdly formatted
+// something similar to
+// let installButtonedinstallButton=document.ge...
+// Now your install button is visible when on index.html
 
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (event) => {
@@ -19,9 +25,9 @@ function doInstall() {
         deferredPrompt=null
     });
 }
-var urlParams=newURLSearchParams(window.location.search);
+var urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('source') ==='pwa') {
-    console.log('Launched as PWA');
+    console.log('Launched as PWA')
     let theTitle=document.getElementById('title');
     theTitle.innerHTML=theTitle.innerHTML+' (PWA)';
 }

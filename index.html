@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="theme-color" content="#3653B3"/>
-  <title>Hello World</title>
+  <title id="title">Hello World</title>
   <link rel="stylesheet" href="css/main.css">
   <link rel="manifest" href="/manifest.json">
   <link rel="icon"type="image/png"sizes="192x192"href="icons/android-icon-192x192.png">
-  <link rel="icon"type="image/png"sizes="192x192"href="icons/android-icon-512x512.png">
+  <link rel="icon"type="image/png"sizes="512x512"href="icons/android-icon-512x512.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.ready.then(reg => {
@@ -16,18 +17,24 @@
 
       });
       navigator.serviceWorker.register('./sw.js')
-        .then(function (reg) {
-          console.log(`Service Worker Registration (Scope: ${reg.scope})`);
-        })
-        .catch(function (error) {
-        
-          console.log(`Service Worker Error (${error})`);
-        });
+              .then(function (reg) {
+                console.log(`Service Worker Registration (Scope: ${reg.scope})`);
+              })
+              .catch(function (error) {
+
+                console.log(`Service Worker Error (${error})`);
+              });
     } else {
-     
+
       console.warn('Service Worker not available');
     }
+
+    // Not end of index.html, as in instructions, but end of head in index.html
+    // Source: Chapter02EditApp 1:03
+    // Moved from body to head
+
   </script>
+
 </head>
 <body class="fullscreen">
   <div id='installButtonDiv'>
