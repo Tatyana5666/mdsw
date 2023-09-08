@@ -1,25 +1,42 @@
-var cacheName = 'hello-pwa';
-var filesToCache = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/main.js'
-];
+var urlList = [
+    '/',
+    '/css/fishcreek.css',
+    '/images/askthevet.gif',
+    '/images/fishcreeklogo.gif',
+    '/images/home.gif',
+    '/images/services.gif',
+    '/askvet.html',
+    '/favicon.ico',
+    '/index.html',
+    '/services.html'
+]
 
-/* Start the service worker and cache all of the app's content */
-self.addEventListener('install', function(e) {
-  e.waitUntil(
-    caches.open(cacheName).then(function(cache) {
-      return cache.addAll(filesToCache);
-    })
-  );
-});
+self.addEventListener('install', event => {
+    console.log(`SW: ${event.type} even fired`)
+    event.waitUntil(
+        caches.open('pwa-learn-cache')
+        .then(cache => {
+            console.log('SW: Cache Opened')
+            return cache.addAll(urlList)
+        })
+        .catch(error => {
+            console.error(error)
+        })
 
-/* Serve cached content when offline */
-self.addEventListener('fetch', function(e) {
-  e.respondWith(
-    caches.match(e.request).then(function(response) {
-      return response || fetch(e.request);
-    })
-  );
-});
+    )
+})
+
+self.addEventListener('fetch', event => {
+    console.log(`SW: ${event.type} ${event.request.url}`)
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => {
+                if (response) {
+                    console.log(`SW: Return Cache ${event.request.url}`)
+                    return response
+                }
+                console.log(`SW: Return Network ${event.request.url}`)
+                return fetch(event.request)
+            })
+    )
+})
