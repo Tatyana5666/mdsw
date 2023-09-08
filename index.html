@@ -1,14 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="theme-color" content="#3653B3"/>
-  <title id="title">Hello World</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="icon"type="image/png"sizes="192x192"href="icons/android-icon-192x192.png">
-  <link rel="icon"type="image/png"sizes="512x512"href="icons/android-icon-512x512.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fish Creek Animal Clinic</title>
+<meta charset="utf-8">
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<link href="css/fishcreek.css" rel="stylesheet">
 
   <script>
     if ('serviceWorker' in navigator) {
@@ -28,22 +24,46 @@
 
       console.warn('Service Worker not available');
     }
-
-    // Not end of index.html, as in instructions, but end of head in index.html
-    // Source: Chapter02EditApp 1:03
-    // Moved from body to head
-
   </script>
 
 </head>
-<body class="fullscreen">
-  <div id='installButtonDiv'>
-    <button id='installButton'>Install</button>
-  </div>
-  <div class="container">
-    <img src="images/app.jpg">
-    <h1 class="title">Hello World!</h1>
-  </div>
-  <script src="js/main.js"></script>
+<body>
+<div id="wrapper">
+  <header>
+    <h1>Fish Creek Animal Clinic</h1>
+  </header>
+  <nav>
+    <a href="index.html"><img src="images/home.gif" alt="Home" width="132" height="27"></a> &nbsp; 
+    <a href="services.html"><img src="images/services.gif" alt="Services" width="132" height="27"></a> &nbsp; 
+    <a href="askvet.html"><img src="images/askthevet.gif" alt="Ask the Vet" width="132" height="27"></a> &nbsp; 
+    </nav>
+  <main>
+    <h2>Professional, Compassionate Care for Your Pet</h2>
+    <p>The caring doctors and staff at Fish Creek Animal Clinic understand the special bond 
+you share with your cherished pet.</p>
+    <dl>
+      <dt>Years of Experience</dt>
+      <dd>Fish Creek Veterinarians have provided personalized and compassionate care since 1984.</dd>
+      <dt>Open Door Policy</dt>
+      <dd>We welcome owners to stay with their pets during any medical procedure.</dd>
+      <dt>Always Available</dt>
+      <dd>Our professionals are on duty 24 hours a day, 7 days a week.</dd>
+    </dl>
+    <div>
+Fish Creek Animal Clinic<br>
+800-555-5555<br>
+12456 Grassy Lane<br>
+Fish Creek, WI 55534<br><br>
+    </div>
+  </main>
+  <footer>
+    <nav>
+    <a href="index.html">Home</a> &nbsp; 
+    <a href="services.html">Services</a> &nbsp; 
+    <a href="askvet.html">Ask the Vet</a> &nbsp; 
+   </nav>
+Copyright &copy; 2020 Fish Creek Animal Clinic
+  </footer>
+</div>
 </body>
 </html>
