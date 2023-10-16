@@ -2,38 +2,41 @@
 <html lang='en'>
 
 <head>
-    <title>Push Notifications</title>
+    <title>Sending Message</title>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <link rel="manifest" href="app.webmanifest">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.ready.then(reg => {
+                console.log(`Service Worker ready (Scope: ${reg.scope})`)
+
+            });
+            navigator.serviceWorker.register('./sw.js?v1')
+                .then(function (reg) {
+                    console.log(`Service Worker Registration (Scope: ${reg.scope})`);
+                })
+                .catch(function (error) {
+
+                    console.log(`Service Worker Error (${error})`);
+                });
+        } else {
+
+            console.warn('Service Worker not available in index.html script');
+        }
+    </script>
 
 </head>
 
 <body>
-    <div id="mainBody">
 
-        <h1>Chapter 6: Push</h1>
-        <p>This is a simple app that demonstrates many of the parts of the browser Push Notifications process.</p>
-    
-        <div id="subscribeDiv" hidden>
-          <p>Click or tap the <strong>Subscribe</strong> button to register this browser for notifications.</p>
-          <button type="button" id="btnSubscribe">Subscribe</button>
-        </div>
-    
-        <div id="noNotificationsWarning" hidden>
-          <p>This browser does not support notifications. Please try another browser</p>
-        </div>
-    
-        <div id="unsubscribeDiv" hidden>
-          <p>Click or tap the <strong>Unsubscribe</strong> button to unsubscribe this browser from notifications.</p>
-          <button type="button" id="btnUnsubscribe">Unsubscribe</button>
-        </div>
-    </div>
-      
+    <label for = "messageText">Message:</label>
+    <input type = "text" id="messageText">
+    <button type = "button" id="btnMessage">Send Message</button>
 
     <!-- register the service worker -->
-    <script src='js/sw-reg.js'></script>
+    <script src='sw.js'></script>
     <!-- load our page's JavaScript -->
-    <script src="js/index.js"></script>
+    <script src='index.js'></script>
 </body>
 </html>
