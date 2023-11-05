@@ -1,29 +1,27 @@
-const version = 'v1'
-self.addEventListener('message', event => {
-    console.log(`SW: Message event fired: ${event.data}`)
-    console.dir(event)
-    if (typeof event.data.action !== 'undefined') {
-        console.log('SW: Action message received')
-        let theAction = event.data.action;
-        switch (theAction) {
-            case 'messageSent':
-                console.log('SW: Processing message')
-                event.ports[0].postMessage('message received')
-                break;
-            default:
-                console.log('SW: Unrecognized action')
-        }
-    } else {
-        console.log('SW: Not an action')
-    }
+self.addEventListener('install', function(event) {
+    event.waitUntil(
+        caches.open('static-cache-v1')
+            .then(function(cache) {
+                return cache.addAll([
+                    '.',
+                    'css/main.css',
+                    'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700',
+                    'images/still_life-1600_large_2x.jpg',
+                    'images/still_life_800_large_1x.jpg',
+                    'images/still_life_medium.jpg',
+                    'images/still_life_small.jpg'
+                ])
+            })
+    )
 })
 
-self.addEventListener('install', event => {
-    console.log(`Event fired: ${event.type}`);
-    console.dir(event);
-});
-
-self.addEventListener('activate', event => {
-    console.log(`Event fired: ${event.type}`);
-    console.dir(event);
-});
+self.addEventListener('fetch', function(event) {
+    event.respondWith(caches.match(event.request)
+        .then(function(response) {
+            if (response) {
+                return response
+            }
+            return fetch(event.request)
+        })
+    )
+})
