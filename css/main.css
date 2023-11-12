@@ -1,16 +1,23 @@
-#installButtonDiv {
-  position: absolute;
-  top: 1vh;
-  right: 2vw;
-  }
-  button#installButton {
-  background-color: rgb(54, 83, 179);
-  color: white;
-  padding: 1.3vw 1.6vw;
-  font-size: 1.5vw;
-  cursor: pointer;
-  border-radius: 5px;display:none;
-  }
-  button#installButton:hover {
-  background-color: #f87a03;
-  }
+body {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    background: #eeeeee;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    padding: 1em;
+    box-shadow: 1px 1px rgba(0,0,0,.1);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+li span {
+    display: block;
+    font-weight: normal;
+    font-size: .8em;
+}
