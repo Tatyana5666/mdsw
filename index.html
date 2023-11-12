@@ -1,79 +1,28 @@
-  <!doctype html>
+<!doctype html>
 <html>
+<head>   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Directory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-
-  <!-- Chrome for Android Theme Color -->
-  <meta name="theme-color" content="#2E3AA1">
-
-  <!-- Add to home screen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="Blog">
-  <link rel="icon" sizes="192x192" href="images/touch/icon-192x192.png">
-
-  <!-- Add to home screen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Blog">
-  <link rel="apple-touch-icon" href="images/touch/icon-192x192.png">
-
-  <title>My responsive blog: picture story</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="manifest" href="manifest.json" />
 </head>
-
 <body>
-  <header>
-    <h1>Welcome to my blog</h1>
-  </header>
 
-  <article>
+    <h1>Employee Directory</h1>
 
-    <picture id="banner">
-      <source media="(min-width: 750px)"
-        srcset="images/still_life-1600_large_2x.jpg 2x, images/still_life-800_large_1x.jpg" />
-      <source media="(min-width: 500px)" srcset="images/still_life_medium.jpg" />
-      <img src="images/still_life_small.jpg" alt="Vase, fruit bowl and other objects on a cupboad">
-    </picture>
+    <ul id="people">
 
-    <section id="post">
-
-      <h2>Blog post for today</h2>
-
-      <p>I love cheese, especially manchego swiss.</p>
-
-    </section>
-    <section id="post">
-
-      <h2>Blog post for yesterday</h2>
-
-      <p>I started this blog about food today.</p>
-
-    </section>
-
-  </article>
-
-<script>
-  (function() {
-    if (!('serviceWorker' in navigator)) {
-      console.log('Service Worker not supported');
-      return;
-    }
-    navigator.serviceWorker.register('sw.js')
-            .then(function (registration) {
-              console.log('SW successfully registered')
-            })
-            .catch(function (error) {
-              console.log('registration failed', error)
-            })
-  })();
-</script>
-
+    </ul>
+    
+    <script async src="js/app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+            });
+        }
+    </script>
 </body>
-
 </html>
