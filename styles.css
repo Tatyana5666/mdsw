@@ -1,0 +1,22 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+li {
+    display: table-row;
+}
+
+li > span {
+    display: table-cell;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+li > span:first-child {
+    font-weight: bold;
+}

@@ -1,22 +1,21 @@
-<!doctype html>
-<html>
-<head>   
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Directory</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta name="theme-color" content="#3498db">
+    <title>Movies List</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="manifest.json">
 
 </head>
 <body>
-
-    <h1>Employee Directory</h1>
-
-    <ul id="people">
-
+    <h1>Popular Movies</h1>
+    <ul id="movies">
     </ul>
-    
-    <script async src="js/app.js"></script>
+
+
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -24,5 +23,7 @@
             });
         }
     </script>
+
+    <script src="movies.js"></script>
 </body>
 </html>
